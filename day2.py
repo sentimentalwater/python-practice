@@ -1,0 +1,10 @@
+name = input("enter your name:")
+major = input("enter your major:")
+city = input("enter your city:")
+goal = input("enter your learning goal:")
+
+print("---your information---")
+print("your name:", name)
+print("your major:", major)
+print("your hometown:", city)
+print("your learning goal:", goal)
