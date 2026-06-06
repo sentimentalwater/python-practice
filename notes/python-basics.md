@@ -245,3 +245,54 @@ else:
 ```text
 输入分数 → 从高到低判断等级 → 输出结果
 ```
+
+
+# Day 6：and / or 多条件判断
+
+## 概念
+`and / or` 用于判断多个条件。
+
+## 示例
+
+```python
+if score >= 60 and attendance >= 80:
+    print("Pass")
+else:
+    print("Fail")
+```
+
+```python
+if score >= 60 or attendance >= 95:
+    print("Pass")
+else:
+    print("Fail")
+```
+
+## 完整代码
+
+```python
+name = input("Enter your name: ")
+score = float(input("Enter your score: "))
+attendance = float(input("Enter your attendance rate: "))
+
+print("----- Course Result -----")
+print("Name:", name)
+print("Score:", score)
+print("Attendance:", attendance)
+
+if score >= 60 and attendance >= 80:
+    print("Result: Pass")
+else:
+    print("Result: Fail")
+```
+
+## 要点
+- `and`：两个条件都成立，整体才成立。
+- `or`：至少一个条件成立，整体就成立。
+- 多条件判断仍然要注意冒号和缩进。
+
+## 易错点
+- `and` 和 `or` 不要混淆。
+- 条件两边都要写完整。
+- 不要写成 `score >= 60 and attendance`。
+- 正确写法是 `score >= 60 and attendance >= 80`。
