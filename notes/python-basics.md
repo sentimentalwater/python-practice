@@ -296,3 +296,48 @@ else:
 - 条件两边都要写完整。
 - 不要写成 `score >= 60 and attendance`。
 - 正确写法是 `score >= 60 and attendance >= 80`。
+
+
+# Day 7：strip() / lower() 处理字符串输入
+
+## 概念
+`strip()` 去掉字符串两边空格。  
+`lower()` 把英文转成小写。
+
+## 示例
+
+```python
+text = " YES "
+print(text.strip().lower())
+```
+
+输出：
+
+```text
+yes
+```
+
+## 完整代码
+
+```python
+name = input("Enter your name: ").strip()
+score = float(input("Enter your score: "))
+attendance = float(input("Enter your attendance: "))
+bonus = input("Do you have bonus? yes/no: ").strip().lower()
+
+if score >= 60 and (attendance >= 80 or bonus == "yes"):
+    print("Result: Pass")
+else:
+    print("Result: Fail")
+```
+
+## 要点
+- `input()` 得到的是字符串。
+- 用户输入可能有大小写和空格问题。
+- `.strip().lower()` 可以让输入更稳定。
+- 常用于处理 yes/no 这类输入。
+
+## 易错点
+- `bonus == "yes"` 只能识别小写 yes。
+- 用户输入 `YES`、`Yes`、` yes ` 时，直接判断可能失败。
+- 推荐写法：`input(...).strip().lower()`
