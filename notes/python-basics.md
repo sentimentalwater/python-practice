@@ -382,3 +382,73 @@ print("All days completed.")
 - 忘记缩进。
 - 忘记写 `count = count + 1`，导致死循环。
 - `while count <= 5:` 会在条件为 True 时一直执行。
+
+
+# Day 9：for 循环 + range()
+
+## 概念
+`for` 用于按次数循环。  
+`range()` 用于生成数字范围。
+
+## 示例
+
+```python
+for number in range(1, 6):
+    print(number)
+```
+
+输出：
+
+```text
+1
+2
+3
+4
+5
+```
+
+## range()
+```python
+range(5)        # 0 到 4
+range(1, 6)     # 1 到 5
+range(1, 10, 2) # 1, 3, 5, 7, 9
+```
+
+## 累加
+
+```python
+total = 0
+
+for number in range(1, 6):
+    total = total + number
+
+print(total)
+```
+
+## 完整代码
+
+```python
+total_days = int(input("Enter total learning days: "))
+total_hours = 0
+
+for day in range(1, total_days + 1):
+    hours = float(input("Enter study hours for day " + str(day) + ": "))
+    total_hours = total_hours + hours
+
+print("Total days:", total_days)
+print("Total hours:", total_hours)
+print("Average hours:", total_hours / total_days)
+```
+
+## 要点
+- `range()` 包含开始，不包含结束。
+- `range(1, 6)` 输出 1 到 5。
+- `for` 下面的代码要缩进。
+- `total = total + hours` 表示不断累加。
+- `str(day)` 把数字转成字符串，方便和文字拼接。
+
+## 易错点
+- 忘记冒号 `:`。
+- 忘记缩进。
+- 想输出 1 到 5，却写成 `range(1, 5)`。
+- 数字和字符串不能直接用 `+` 拼接，需要 `str()`。
