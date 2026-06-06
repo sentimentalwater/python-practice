@@ -148,3 +148,61 @@ print("Total hours:", total_hours)
 - `input()` 得到的 `"18"` 不是数字 `18`。
 - 小数不能直接用 `int()` 转换。
 - 输入非数字内容时，`int()` / `float()` 会报 `ValueError`。
+
+
+# Day 4：if / else 条件判断
+
+## 概念
+`if / else` 用于让程序根据条件执行不同代码。
+
+## 示例
+
+```python
+score = float(input("Enter your score: "))
+
+if score >= 60:
+    print("Pass")
+else:
+    print("Fail")
+```
+
+## 完整代码
+
+```python
+name = input("Enter your name: ")
+score = float(input("Enter your score: "))
+
+print("----- Result -----")
+print("Name:", name)
+print("Score:", score)
+
+if score >= 60:
+    print("Status: Pass")
+else:
+    print("Status: Fail")
+```
+
+## 要点
+- `if` 表示如果。
+- `else` 表示否则。
+- `if` 条件后面要加冒号 `:`。
+- Python 用缩进表示代码块。
+- `=` 是赋值，`==` 是判断相等。
+
+## 常用比较符
+
+```text
+>    大于
+<    小于
+>=   大于等于
+<=   小于等于
+==   等于
+!=   不等于
+```
+
+## 易错点
+- 忘记写冒号 `:`。
+- `if` 下面的代码忘记缩进。
+- 把 `==` 写成 `=`。
+- 输入分数后忘记用 `float()` 或 `int()` 转数字。
+```
