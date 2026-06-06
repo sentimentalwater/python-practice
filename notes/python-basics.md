@@ -206,3 +206,42 @@ else:
 - 把 `==` 写成 `=`。
 - 输入分数后忘记用 `float()` 或 `int()` 转数字。
 ```
+
+
+
+# Day 5：elif 多分支判断
+
+## 概念
+`elif` 用于处理多个条件，意思是“否则如果”。
+
+## 示例
+
+```python
+score = float(input("Enter your score: "))
+
+if score >= 90:
+    print("Excellent")
+elif score >= 80:
+    print("Good")
+elif score >= 60:
+    print("Pass")
+else:
+    print("Fail")
+```
+
+## 要点
+- `if` 判断第一个条件。
+- `elif` 判断其他条件。
+- `else` 处理以上条件都不成立的情况。
+- 程序从上往下判断，满足一个条件后就停止。
+
+## 易错点
+- `if`、`elif`、`else` 后面都要加冒号 `:`。
+- 条件下面的代码要缩进。
+- 判断成绩等级时，高分条件要写在前面。
+
+## 今日代码结构
+
+```text
+输入分数 → 从高到低判断等级 → 输出结果
+```
