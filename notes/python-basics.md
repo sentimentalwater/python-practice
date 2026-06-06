@@ -101,3 +101,50 @@ print("Goal:", goal)
 ## 今日误区预防
 - 不要把变量名写进引号。
 - 不要把终端命令写进 Python 文件。
+
+
+
+# Day 3：int() / float() 类型转换
+
+## 概念
+`input()` 得到的内容默认是字符串。  
+做数学计算前，需要用 `int()` 或 `float()` 转成数字。
+
+## 示例
+
+```python
+age = int(input("Enter your age: "))
+print(age + 1)
+```
+
+```python
+hours = float(input("Enter study hours: "))
+print(hours)
+```
+
+## 完整代码
+
+```python
+name = input("Enter your name: ")
+daily_hours = float(input("How many hours do you study programming every day? "))
+days = int(input("How many days will you keep learning? "))
+
+total_hours = daily_hours * days
+
+print("----- Study Result -----")
+print("Name:", name)
+print("Daily hours:", daily_hours)
+print("Days:", days)
+print("Total hours:", total_hours)
+```
+
+## 要点
+- `input()` 默认得到字符串。
+- `int()` 用于整数。
+- `float()` 用于小数。
+- 数学计算前要先转换类型。
+
+## 易错点
+- `input()` 得到的 `"18"` 不是数字 `18`。
+- 小数不能直接用 `int()` 转换。
+- 输入非数字内容时，`int()` / `float()` 会报 `ValueError`。
