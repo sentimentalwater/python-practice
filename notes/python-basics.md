@@ -341,3 +341,44 @@ else:
 - `bonus == "yes"` 只能识别小写 yes。
 - 用户输入 `YES`、`Yes`、` yes ` 时，直接判断可能失败。
 - 推荐写法：`input(...).strip().lower()`
+
+
+# Day 8：while 循环
+
+## 概念
+`while` 用于重复执行代码。只要条件成立，就继续循环。
+
+## 示例
+
+```python
+count = 1
+
+while count <= 5:
+    print(count)
+    count = count + 1
+```
+
+## 完整代码
+
+```python
+day = 1
+total_days = int(input("Enter total learning days: "))
+
+while day <= total_days:
+    print("Day", day, "completed")
+    day = day + 1
+
+print("All days completed.")
+```
+
+## 要点
+- `while` 后面写条件。
+- 条件后面要加冒号 `:`。
+- 循环体要缩进。
+- 循环变量要变化，否则可能死循环。
+
+## 易错点
+- 忘记写冒号。
+- 忘记缩进。
+- 忘记写 `count = count + 1`，导致死循环。
+- `while count <= 5:` 会在条件为 True 时一直执行。
