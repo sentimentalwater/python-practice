@@ -508,3 +508,67 @@ print("Total students:", len(students))
 - `append()` 后面要有括号。
 - `students.append(name)` 是把变量 `name` 的内容加入列表。
 - 不要写成 `students = students.append(name)`。
+
+
+# Day 11：列表遍历 + 统计
+
+## 概念
+遍历列表：把列表里的元素一个个取出来处理。
+
+## 示例
+
+```python
+scores = [85, 90, 76]
+
+for score in scores:
+    print(score)
+```
+
+## 累加
+
+```python
+total_score = 0
+
+for score in scores:
+    total_score = total_score + score
+```
+
+## 完整代码
+
+```python
+scores = []
+
+total_students = int(input("Enter student number: "))
+
+for number in range(1, total_students + 1):
+    score = float(input(f"Enter student {number} score: "))
+    scores.append(score)
+
+total_score = 0
+
+for score in scores:
+    total_score = total_score + score
+
+average_score = total_score / len(scores)
+highest_score = max(scores)
+lowest_score = min(scores)
+
+print("Scores:", scores)
+print("Total score:", total_score)
+print("Average score:", average_score)
+print("Highest score:", highest_score)
+print("Lowest score:", lowest_score)
+```
+
+## 要点
+- `for score in scores` 会依次取出列表中的每个分数。
+- `total_score = total_score + score` 表示累加。
+- `len(scores)` 获取列表长度。
+- `max(scores)` 获取最大值。
+- `min(scores)` 获取最小值。
+
+## 易错点
+- 输入分数时要用 `float()`，否则保存的是字符串。
+- `score` 是循环临时变量，不需要提前创建。
+- `len(scores)` 不能为 0，否则平均分计算会出错。
+- `scores.append(score)` 是把分数加入列表。
