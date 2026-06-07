@@ -452,3 +452,59 @@ print("Average hours:", total_hours / total_days)
 - 忘记缩进。
 - 想输出 1 到 5，却写成 `range(1, 5)`。
 - 数字和字符串不能直接用 `+` 拼接，需要 `str()`。
+
+
+# Day 10：list 列表基础
+
+## 概念
+`list` 用于保存一组数据。
+
+## 示例
+
+```python
+names = ["Alex", "Bob", "Cindy"]
+
+print(names[0])
+print(names[1])
+print(names[2])
+```
+
+## 常用操作
+
+```python
+names = ["Alex", "Bob"]
+
+names.append("Cindy")
+print(names)
+
+print(len(names))
+```
+
+## 完整代码
+
+```python
+students = []
+
+total_students = int(input("Enter number of students: "))
+
+for number in range(1, total_students + 1):
+    name = input(f"Enter student {number} name: ").strip()
+    students.append(name)
+
+print("----- Student List -----")
+print(students)
+print("Total students:", len(students))
+```
+
+## 要点
+- 列表可以保存多个数据。
+- 索引从 `0` 开始。
+- `append()` 用于添加元素。
+- `len()` 用于获取列表长度。
+- 空列表写作 `[]`。
+
+## 易错点
+- 第一个元素是 `names[0]`，不是 `names[1]`。
+- `append()` 后面要有括号。
+- `students.append(name)` 是把变量 `name` 的内容加入列表。
+- 不要写成 `students = students.append(name)`。
