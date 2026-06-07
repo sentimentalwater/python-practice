@@ -572,3 +572,88 @@ print("Lowest score:", lowest_score)
 - `score` 是循环临时变量，不需要提前创建。
 - `len(scores)` 不能为 0，否则平均分计算会出错。
 - `scores.append(score)` 是把分数加入列表。
+
+
+# Day 12：列表筛选 + 条件统计
+
+## 概念
+列表筛选：遍历列表，用 `if` 判断，把符合条件的数据放进新列表。
+
+## 示例
+
+```python
+scores = [85, 45, 90, 58, 76]
+
+passed_scores = []
+failed_scores = []
+
+for score in scores:
+    if score >= 60:
+        passed_scores.append(score)
+    else:
+        failed_scores.append(score)
+
+print(passed_scores)
+print(failed_scores)
+```
+
+## 计数
+
+```python
+pass_count = 0
+
+for score in scores:
+    if score >= 60:
+        pass_count += 1
+```
+
+`pass_count += 1` 等于：
+
+```python
+pass_count = pass_count + 1
+```
+
+## 完整代码
+
+```python
+scores = []
+
+total_students = int(input("Enter student number: "))
+
+for number in range(1, total_students + 1):
+    score = float(input(f"Enter student {number} score: "))
+    scores.append(score)
+
+passed_scores = []
+failed_scores = []
+
+for score in scores:
+    if score >= 60:
+        passed_scores.append(score)
+    else:
+        failed_scores.append(score)
+
+pass_count = len(passed_scores)
+fail_count = len(failed_scores)
+pass_rate = pass_count / len(scores) * 100
+
+print("All scores:", scores)
+print("Passed scores:", passed_scores)
+print("Failed scores:", failed_scores)
+print("Pass count:", pass_count)
+print("Fail count:", fail_count)
+print("Pass rate:", pass_rate, "%")
+```
+
+## 要点
+- `for score in scores` 遍历列表。
+- `if score >= 60` 判断是否及格。
+- `append()` 把符合条件的数据加入新列表。
+- `len()` 可以统计列表元素数量。
+- `+= 1` 是累加简写。
+
+## 易错点
+- `passed_scores` 和 `failed_scores` 要先创建为空列表。
+- `append()` 要放在循环内部。
+- `pass_rate = pass_count / len(scores) * 100` 中，`len(scores)` 不能为 0。
+- 输入分数要用 `float()`。
