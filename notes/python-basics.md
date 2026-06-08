@@ -743,3 +743,74 @@ for student in students:
 - 读取不存在的 key 会报错。
 - `student["score"] = 95`：key 存在是修改，不存在是新增。
 - `students.append(student)` 是把整个学生字典加入列表。
+
+
+# Day 14：函数 def 基础
+
+## 概念
+函数用于把一段代码打包，需要时调用。
+
+## 示例
+
+```python
+def say_hello():
+    print("Hello")
+
+say_hello()
+```
+
+## 参数
+
+```python
+def greet(name):
+    print("Hello,", name)
+
+greet("Alex")
+```
+
+## 结合 dict
+
+```python
+def print_student(student):
+    print("Name:", student["name"])
+    print("Score:", student["score"])
+    print("Attendance:", student["attendance"])
+
+student = {
+    "name": "Alex",
+    "score": 85,
+    "attendance": 90
+}
+
+print_student(student)
+```
+
+## 完整代码
+
+```python
+def print_student(student):
+    print("Name:", student["name"])
+    print("Score:", student["score"])
+    print("Attendance:", student["attendance"])
+
+    if student["score"] >= 60 and student["attendance"] >= 80:
+        print("Result: Pass")
+    else:
+        print("Result: Fail")
+
+    print("-----")
+```
+
+## 要点
+- `def` 用于定义函数。
+- 函数名后面要有 `()`。
+- 函数体要缩进。
+- 定义函数不等于执行函数。
+- 调用函数要写 `函数名()`。
+- 参数是调用函数时传进去的数据。
+
+## 易错点
+- 只写 `def` 不调用，函数不会执行。
+- 调用函数时不要忘记括号。
+- 函数要先定义，再调用。
+- 参数名只在函数内部使用。
