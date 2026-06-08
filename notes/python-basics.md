@@ -657,3 +657,89 @@ print("Pass rate:", pass_rate, "%")
 - `append()` 要放在循环内部。
 - `pass_rate = pass_count / len(scores) * 100` 中，`len(scores)` 不能为 0。
 - 输入分数要用 `float()`。
+
+
+
+# Day 13：dict 字典基础
+
+## 概念
+`dict` 用 key-value 保存数据。
+
+```python
+student = {
+    "name": "Alex",
+    "score": 90
+}
+```
+
+## 读取
+
+```python
+print(student["name"])
+print(student["score"])
+```
+
+## 修改 / 新增
+
+```python
+student["score"] = 95
+student["attendance"] = 90
+```
+
+## list + dict
+
+```python
+students = []
+
+student = {
+    "name": "Alex",
+    "score": 90,
+    "attendance": 95
+}
+
+students.append(student)
+```
+
+## 完整代码
+
+```python
+students = []
+
+total_students = int(input("Enter student number: "))
+
+for number in range(1, total_students + 1):
+    name = input(f"Enter student {number} name: ").strip()
+    score = float(input(f"Enter student {number} score: "))
+    attendance = float(input(f"Enter student {number} attendance: "))
+
+    student = {
+        "name": name,
+        "score": score,
+        "attendance": attendance
+    }
+
+    students.append(student)
+
+for student in students:
+    print("Name:", student["name"])
+    print("Score:", student["score"])
+    print("Attendance:", student["attendance"])
+
+    if student["score"] >= 60 and student["attendance"] >= 80:
+        print("Result: Pass")
+    else:
+        print("Result: Fail")
+```
+
+## 要点
+- `dict` 用 `{}`。
+- 数据结构是 `"key": value`。
+- 用 `student["name"]` 读取数据。
+- key 通常用字符串。
+- 多个 dict 可以放进 list。
+
+## 易错点
+- key 要加引号，例如 `"name"`。
+- 读取不存在的 key 会报错。
+- `student["score"] = 95`：key 存在是修改，不存在是新增。
+- `students.append(student)` 是把整个学生字典加入列表。
