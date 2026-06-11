@@ -1170,3 +1170,84 @@ for student in students:
 - `items()` 要写成 `for key, value in student.items():`
 - `key + ":"` 要求 key 是字符串。
 - `print(key + ":", value)` 比 `print(key + ":" + value)` 更安全，因为 value 可能是数字。
+
+
+# Day 20：list + dict 综合练习
+
+## 核心结构
+
+```python
+students = [
+    {"name": "Alex", "score": 90, "attendance": 95},
+    {"name": "Bob", "score": 75, "attendance": 70}
+]
+```
+
+## 创建学生列表
+
+```python
+students = []
+
+student = {
+    "name": name,
+    "score": score,
+    "attendance": attendance
+}
+
+students.append(student)
+```
+
+## 遍历所有学生
+
+```python
+for student in students:
+    for key, value in student.items():
+        print(key + ":", value)
+```
+
+## 筛选学生
+
+```python
+passed_students = []
+
+for student in students:
+    if student["score"] >= 60 and student["attendance"] >= 80:
+        passed_students.append(student)
+```
+
+## 计算平均分
+
+```python
+total_score = 0
+
+for student in students:
+    total_score = total_score + student["score"]
+
+average_score = total_score / len(students)
+```
+
+## 找最高分学生
+
+```python
+top_student = students[0]
+
+for student in students:
+    if student["score"] > top_student["score"]:
+        top_student = student
+```
+
+## 要点
+
+- `students` 是列表。
+- 每个 `student` 是字典。
+- 先遍历 list，再处理 dict。
+- `student["score"]` 用来取当前学生的分数。
+- `students.append(student)` 把一个学生加入学生列表。
+- 函数拆分可以让程序结构更清楚。
+
+## 易错点
+
+- list 没有 `.items()`，dict 才有。
+- `students[0]` 是第一个学生字典。
+- `student["score"]` 不能写成 `students["score"]`。
+- 函数里算出来的结果，后面要用就必须 `return`。
