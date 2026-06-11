@@ -1,0 +1,12 @@
+---student---
+name: alex1 
+name: 23.0 
+attendance: 32.0 
+---student---
+name: alex2 
+name: 12.0 
+attendance: 21.0 
+---student---
+name: alex 
+name: 12.0 
+attendance: 32.0 

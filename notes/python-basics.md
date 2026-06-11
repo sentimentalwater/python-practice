@@ -1251,3 +1251,73 @@ for student in students:
 - `students[0]` 是第一个学生字典。
 - `student["score"]` 不能写成 `students["score"]`。
 - 函数里算出来的结果，后面要用就必须 `return`。
+
+
+# Day 21：文件写入 txt
+
+## open() 写入文件
+
+```python
+with open("students.txt", "w", encoding="utf-8") as file:
+    file.write("Hello Python")
+```
+
+## w 模式
+
+```python
+"w"
+```
+
+覆盖写入。原文件内容会被清空。
+
+## a 模式
+
+```python
+"a"
+```
+
+追加写入。新内容会加到文件末尾。
+
+## 换行
+
+```python
+file.write("Alex\n")
+file.write("Bob\n")
+```
+
+`\n` 表示换行。
+
+## 写入数字
+
+```python
+score = 90
+
+file.write(str(score))
+```
+
+`write()` 只能直接写字符串，数字要用 `str()` 转换。
+
+## 写入多个学生
+
+```python
+with open("students.txt", "w", encoding="utf-8") as file:
+    for student in students:
+        file.write("Name: " + student["name"] + "\n")
+        file.write("Score: " + str(student["score"]) + "\n")
+```
+
+## 要点
+
+- `with open(...) as file:` 是打开文件的常用写法。
+- `file.write()` 用来写入内容。
+- `w` 会覆盖原内容。
+- `a` 会追加内容。
+- 多行内容要加 `\n`。
+- 写入数字要先转成字符串。
+
+## 易错点
+
+- 忘记加 `\n`，内容会挤在一行。
+- `write()` 不能直接写数字。
+- `w` 模式会覆盖原文件。
+- 文件通常会生成在当前运行目录下。
