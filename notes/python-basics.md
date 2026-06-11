@@ -888,3 +888,70 @@ def check_level(average_score):
 - 只写 `return` 不 `print`，终端不会自动显示结果。
 - `return` 后面的代码通常不会继续执行。
 - 调用函数时要用变量接住结果，例如 `total = calculate_total(scores)`。
+
+
+# Day 16：函数参数进阶
+
+## 概念
+函数可以接收多个参数，也可以设置默认参数。
+
+## 多个参数
+
+```python
+def show_student(name, score, attendance):
+    print("Name:", name)
+    print("Score:", score)
+    print("Attendance:", attendance)
+
+show_student("Alex", 85, 90)
+```
+
+## 关键字参数
+
+```python
+show_student(name="Alex", score=85, attendance=90)
+```
+
+## 默认参数
+
+```python
+def check_pass(score, pass_score=60):
+    if score >= pass_score:
+        return "Pass"
+    else:
+        return "Fail"
+```
+
+## 完整代码
+
+```python
+def check_result(score, attendance, pass_score=60, pass_attendance=80):
+    if score >= pass_score and attendance >= pass_attendance:
+        return "Pass"
+    else:
+        return "Fail"
+
+
+def check_level(score):
+    if score >= 90:
+        return "Excellent"
+    elif score >= 80:
+        return "Good"
+    elif score >= 60:
+        return "Pass"
+    else:
+        return "Fail"
+```
+
+## 要点
+- 参数是函数接收的外部数据。
+- 多个参数按顺序传入。
+- 关键字参数可以明确指定参数名。
+- 默认参数可以让函数更灵活。
+- 默认参数写在普通参数后面。
+
+## 易错点
+- 参数顺序写错，结果可能不报错但逻辑错。
+- 默认参数不要写在普通参数前面。
+- 调用函数时，括号里放真实数据。
+- 定义函数时，括号里放参数名。
