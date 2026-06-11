@@ -1321,3 +1321,96 @@ with open("students.txt", "w", encoding="utf-8") as file:
 - `write()` 不能直接写数字。
 - `w` 模式会覆盖原文件。
 - 文件通常会生成在当前运行目录下。
+
+
+
+# Day 22：文件读取 txt
+
+## 读取全部内容
+
+```python
+with open("students.txt", "r", encoding="utf-8") as file:
+    content = file.read()
+
+print(content)
+```
+
+## r 模式
+
+```python
+"r"
+```
+
+读取模式。文件必须已经存在。
+
+## 逐行读取
+
+```python
+with open("students.txt", "r", encoding="utf-8") as file:
+    for line in file:
+        line = line.strip()
+        print(line)
+```
+
+## readlines()
+
+```python
+with open("students.txt", "r", encoding="utf-8") as file:
+    lines = file.readlines()
+```
+
+会把所有行读成列表。
+
+## strip()
+
+```python
+line = line.strip()
+```
+
+去掉行首行尾空格和换行符 `\n`。
+
+## split()
+
+```python
+line = "Alex,90,95"
+parts = line.split(",")
+
+name = parts[0]
+score = float(parts[1])
+attendance = float(parts[2])
+```
+
+## 示例：读取学生数据
+
+```python
+students = []
+
+with open("students.txt", "r", encoding="utf-8") as file:
+    for line in file:
+        line = line.strip()
+        parts = line.split(",")
+
+        student = {
+            "name": parts[0],
+            "score": float(parts[1]),
+            "attendance": float(parts[2])
+        }
+
+        students.append(student)
+```
+
+## 要点
+
+- `read()` 读取全部内容。
+- `readline()` 一次读取一行。
+- `readlines()` 读取所有行，返回列表。
+- `for line in file` 最常用。
+- `strip()` 去掉换行。
+- `split(",")` 可以把一行文本拆成多个字段。
+
+## 易错点
+
+- `r` 模式下文件不存在会报错。
+- 读取出来的内容默认是字符串。
+- `parts[1]` 是字符串，要计算必须用 `float()`。
+- 文件要和 `.py` 文件在同一个运行目录下，或者写清楚路径。
