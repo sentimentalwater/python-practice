@@ -814,3 +814,77 @@ def print_student(student):
 - 调用函数时不要忘记括号。
 - 函数要先定义，再调用。
 - 参数名只在函数内部使用。
+
+
+# Day 15：return 返回值
+
+## 概念
+`return` 用于把函数内部的结果返回到函数外部。
+
+## print 和 return
+
+```python
+print(result)   # 显示结果
+return result   # 返回结果
+```
+
+## 示例
+
+```python
+def add_numbers(a, b):
+    result = a + b
+    return result
+
+total = add_numbers(3, 5)
+print(total)
+```
+
+## 判断函数
+
+```python
+def check_pass(score):
+    if score >= 60:
+        return "Pass"
+    else:
+        return "Fail"
+```
+
+## 完整代码
+
+```python
+def calculate_total(scores):
+    total = 0
+
+    for score in scores:
+        total = total + score
+
+    return total
+
+
+def calculate_average(scores):
+    total = calculate_total(scores)
+    average = total / len(scores)
+    return average
+
+
+def check_level(average_score):
+    if average_score >= 90:
+        return "Excellent"
+    elif average_score >= 80:
+        return "Good"
+    elif average_score >= 60:
+        return "Pass"
+    else:
+        return "Fail"
+```
+
+## 要点
+- `return` 后面的值会返回给函数调用处。
+- 调用函数后，可以用变量接住返回值。
+- `print()` 只是显示，`return` 才能让结果继续被使用。
+- 函数可以调用另一个函数。
+
+## 易错点
+- 只写 `return` 不 `print`，终端不会自动显示结果。
+- `return` 后面的代码通常不会继续执行。
+- 调用函数时要用变量接住结果，例如 `total = calculate_total(scores)`。
