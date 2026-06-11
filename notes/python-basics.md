@@ -955,3 +955,63 @@ def check_level(score):
 - 默认参数不要写在普通参数前面。
 - 调用函数时，括号里放真实数据。
 - 定义函数时，括号里放参数名。
+
+
+
+# Day 17：函数拆分综合练习
+
+## 概念
+函数拆分：把一个长程序拆成多个函数，一个函数只负责一件事。
+
+## 常见拆分
+
+```python
+def get_scores():
+    ...
+
+def calculate_average(scores):
+    ...
+
+def check_level(average):
+    ...
+
+def print_result(scores, average, level):
+    ...
+```
+
+## 完整流程
+
+```python
+scores = get_scores()
+average = calculate_average(scores)
+level = check_level(average)
+
+print_result(scores, average, level)
+```
+
+## 示例代码
+
+```python
+def calculate_average(scores):
+    total = 0
+
+    for score in scores:
+        total = total + score
+
+    average = total / len(scores)
+
+    return average
+```
+
+## 要点
+- 函数定义不会自动执行。
+- 函数调用才会执行。
+- `return` 把结果交给函数外部。
+- 一个函数尽量只负责一件事。
+- 主程序应该像流程说明一样清楚。
+
+## 易错点
+- 调用函数时不要忘记括号。
+- 函数需要什么数据，括号里就传什么数据。
+- 函数返回的结果要用变量接住。
+- 修改函数参数后，调用函数的地方也要同步修改。
