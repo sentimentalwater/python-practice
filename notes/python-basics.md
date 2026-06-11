@@ -1100,3 +1100,73 @@ attendance = float(parts[2])
 - `parts[1]` 是字符串，不是数字。
 - `join()` 只能直接连接字符串列表。
 - `",".join(names)` 前面的逗号是连接符。
+
+
+
+# Day 19：遍历 dict 字典
+
+## keys()
+
+遍历字典所有 key。
+
+```python
+for key in student.keys():
+    print(key)
+```
+
+## values()
+
+遍历字典所有 value。
+
+```python
+for value in student.values():
+    print(value)
+```
+
+## items()
+
+同时遍历 key 和 value。
+
+```python
+for key, value in student.items():
+    print(key, value)
+```
+
+## 示例
+
+```python
+student = {
+    "name": "Alex",
+    "score": 85,
+    "attendance": 90
+}
+
+for key, value in student.items():
+    print(key + ":", value)
+```
+
+## list + dict 遍历
+
+```python
+students = [
+    {"name": "Alex", "score": 85},
+    {"name": "Bob", "score": 75}
+]
+
+for student in students:
+    for key, value in student.items():
+        print(key + ":", value)
+```
+
+## 要点
+
+- `keys()` 取所有 key。
+- `values()` 取所有 value。
+- `items()` 同时取 key 和 value，最常用。
+- 外层循环遍历列表，内层循环遍历字典。
+
+## 易错点
+
+- `items()` 要写成 `for key, value in student.items():`
+- `key + ":"` 要求 key 是字符串。
+- `print(key + ":", value)` 比 `print(key + ":" + value)` 更安全，因为 value 可能是数字。
