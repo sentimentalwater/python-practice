@@ -1015,3 +1015,88 @@ def calculate_average(scores):
 - 函数需要什么数据，括号里就传什么数据。
 - 函数返回的结果要用变量接住。
 - 修改函数参数后，调用函数的地方也要同步修改。
+
+
+# Day 18：字符串方法补充
+
+## split()
+
+把字符串拆成列表。
+
+```python
+text = "Alex,85,90"
+parts = text.split(",")
+
+print(parts)
+```
+
+## join()
+
+把字符串列表合成字符串。
+
+```python
+names = ["Alex", "Bob", "Cindy"]
+
+text = ",".join(names)
+
+print(text)
+```
+
+## replace()
+
+替换字符串内容。
+
+```python
+text = "I like Java"
+
+new_text = text.replace("Java", "Python")
+
+print(new_text)
+```
+
+## startswith()
+
+判断字符串开头。
+
+```python
+filename = "report.txt"
+
+print(filename.startswith("report"))
+```
+
+## endswith()
+
+判断字符串结尾。
+
+```python
+filename = "report.txt"
+
+print(filename.endswith(".txt"))
+```
+
+## 示例：解析学生信息
+
+```python
+text = "Alex,85,90"
+parts = text.split(",")
+
+name = parts[0]
+score = float(parts[1])
+attendance = float(parts[2])
+```
+
+## 要点
+
+- `split()`：字符串 → 列表
+- `join()`：列表 → 字符串
+- `replace()`：替换内容
+- `startswith()`：判断开头
+- `endswith()`：判断结尾
+- `split()` 拆出来的数字仍然是字符串，需要 `int()` 或 `float()`
+
+## 易错点
+
+- `split()` 返回列表，要用索引取值。
+- `parts[1]` 是字符串，不是数字。
+- `join()` 只能直接连接字符串列表。
+- `",".join(names)` 前面的逗号是连接符。
