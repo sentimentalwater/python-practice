@@ -1635,3 +1635,136 @@ with open("study_log.txt", "a", encoding="utf-8") as file:
 - `from random import randint` 后才可以直接写 `randint()`。
 - 文件日志通常用 `"a"`，避免覆盖旧内容。
 - `datetime.date.today()` 是一层一层调用。
+
+
+# Day 26：项目结构入门
+
+## 项目结构
+
+```text
+day26-project/
+├── main.py
+├── student_utils.py
+├── file_utils.py
+└── students.csv
+```
+
+## 分工
+
+```text
+main.py：主程序入口，负责调用流程
+student_utils.py：学生数据处理函数
+file_utils.py：文件读写函数
+```
+
+## 导入函数
+
+```python
+from student_utils import get_students
+from file_utils import save_students_csv
+```
+
+导入时不写 `.py`。
+
+## main.py 示例
+
+```python
+from student_utils import get_students, print_students
+from file_utils import save_students_csv, read_students_csv
+
+students = get_students()
+save_students_csv(students)
+
+loaded_students = read_students_csv()
+print_students(loaded_students)
+```
+
+## 要点
+
+- 一个文件不要无限变长，可以拆成多个模块。
+- 工具函数放到工具文件里。
+- 主程序流程放到 `main.py`。
+- `import` 只是导入函数，函数调用才会真正执行。
+- 只运行 `main.py`。
+
+## 易错点
+
+- 文件名和 import 名必须一致。
+- import 时不要写 `.py`。
+- 函数名不能拼错。
+- 运行终端要在项目文件夹里。
+
+
+
+# Day 27：学习时间记录系统 v1
+
+## 项目结构
+
+```text
+day27-study-log/
+├── main.py
+├── log_utils.py
+└── file_utils.py
+```
+
+## 核心数据
+
+```python
+log = {
+    "date": today,
+    "content": content,
+    "hours": hours
+}
+```
+
+多个记录：
+
+```python
+logs = []
+logs.append(log)
+```
+
+## 追加写入 CSV
+
+```python
+with open("study_log.csv", "a", encoding="utf-8") as file:
+    file.write(f"{log['date']},{log['content']},{log['hours']}\n")
+```
+
+## 读取 CSV
+
+```python
+with open("study_log.csv", "r", encoding="utf-8") as file:
+    for line in file:
+        line = line.strip()
+        parts = line.split(",")
+
+        log = {
+            "date": parts[0],
+            "content": parts[1],
+            "hours": float(parts[2])
+        }
+
+        logs.append(log)
+```
+
+## 输入数字防错
+
+```python
+def get_number(prompt):
+    while True:
+        try:
+            number = float(input(prompt))
+            return number
+        except ValueError:
+            print("Please enter a number.")
+```
+
+## 要点
+
+- `main.py` 负责主流程。
+- `log_utils.py` 负责学习记录处理。
+- `file_utils.py` 负责文件读写。
+- `"a"` 是追加写入。
+- 有 `return` 的函数，结果要用变量接住。
+- CSV 读取后数字仍然要 `float()`。
