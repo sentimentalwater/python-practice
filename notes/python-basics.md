@@ -1768,3 +1768,139 @@ def get_number(prompt):
 - `"a"` 是追加写入。
 - 有 `return` 的函数，结果要用变量接住。
 - CSV 读取后数字仍然要 `float()`。
+
+
+# Day 28：学生成绩管理系统 v1
+
+## 项目结构
+
+```text
+day28-student-system/
+├── main.py
+├── student_utils.py
+└── file_utils.py
+```
+
+## 核心流程
+
+```text
+输入学生信息
+→ 保存 CSV
+→ 读取 CSV
+→ 打印学生
+→ 统计平均分
+→ 筛选及格学生
+→ 找最高分学生
+```
+
+## 重要函数
+
+```python
+students = get_students()
+save_students(students)
+
+loaded_students = read_students()
+print_students(loaded_students)
+
+average_score = get_average_score(loaded_students)
+passed_students = get_passed_students(loaded_students)
+top_student = get_top_student(loaded_students)
+```
+
+## CSV 写入
+
+```python
+file.write(f"{student['name']},{student['score']},{student['attendance']}\n")
+```
+
+## CSV 读取
+
+```python
+parts = line.split(",")
+
+student = {
+    "name": parts[0],
+    "score": float(parts[1]),
+    "attendance": float(parts[2])
+}
+```
+
+## 找最高分学生
+
+```python
+top_student = students[0]
+
+for student in students:
+    if student["score"] > top_student["score"]:
+        top_student = student
+```
+
+## 要点
+
+- `main.py` 负责主流程。
+- `student_utils.py` 负责学生数据处理。
+- `file_utils.py` 负责文件读写。
+- 有 `return` 的函数，结果后面要用就要接住。
+- CSV 读取出的数字要用 `float()` 转换。
+- `loaded_students` 表示从文件重新读取回来的数据。
+
+
+# Day 29：菜单版学生成绩管理系统
+
+## 核心升级
+
+Day29 把 Day28 的一次性程序改成菜单式程序。
+
+## 项目结构
+
+```text
+day29-student-system/
+├── main.py
+├── student_utils.py
+└── file_utils.py
+```
+
+## 菜单循环
+
+```python
+while True:
+    print("1. Add student")
+    print("2. View students")
+    print("3. Show summary")
+    print("4. Exit")
+
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        ...
+    elif choice == "4":
+        break
+```
+
+## 追加写入
+
+```python
+with open("students.csv", "a", encoding="utf-8") as file:
+    file.write(f"{student['name']},{student['score']},{student['attendance']}\n")
+```
+
+## 读取数据
+
+```python
+students = read_students()
+```
+
+## 查看统计
+
+```python
+print_summary(students)
+```
+
+## 要点
+
+- `while True` 可以让程序持续运行。
+- `break` 用来退出循环。
+- 菜单选择用 `if / elif / else`。
+- 添加学生用 `"a"` 追加写入。
+- 查看和统计前，要先从 CSV 读取数据。
+- `main.py` 负责菜单流程。

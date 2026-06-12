@@ -9,11 +9,11 @@ def get_number(prompt):
 def get_log():
     logs = []
     import datetime
-    total_day = int(input("enter your log day:"))
+    total_day = get_number("enter your log day:")
     for number in range(1, total_day + 1):
         content = input("what you learn:").strip()
         today = datetime.date.today()
-        hours = float(input("your study hours:"))
+        hours = get_number("your study hours:")
 
         log = {
             "content": content,
