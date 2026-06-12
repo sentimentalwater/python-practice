@@ -1477,3 +1477,82 @@ with open("students.csv", "r", encoding="utf-8") as file:
 - `parts[1]` 是字符串，不是数字。
 - 文件名要和代码里一致。
 - 当前代码只能读取固定格式：`name,score,attendance`。
+
+
+# Day 24：try / except 异常处理
+
+## 基本写法
+
+```python
+try:
+    score = float(input("Enter score: "))
+except ValueError:
+    print("Invalid input.")
+```
+
+## 含义
+
+- `try`：放可能出错的代码
+- `except`：放出错后的处理方式
+
+## while + try
+
+```python
+while True:
+    try:
+        score = float(input("Enter score: "))
+        break
+    except ValueError:
+        print("Please enter a number.")
+```
+
+## 封装输入函数
+
+```python
+def get_number(prompt):
+    while True:
+        try:
+            number = float(input(prompt))
+            return number
+        except ValueError:
+            print("Please enter a number.")
+```
+
+## 文件不存在
+
+```python
+try:
+    with open("students.csv", "r", encoding="utf-8") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found.")
+```
+
+## CSV 格式错误
+
+```python
+try:
+    student = {
+        "name": parts[0],
+        "score": float(parts[1]),
+        "attendance": float(parts[2])
+    }
+except IndexError:
+    print("Invalid line format.")
+except ValueError:
+    print("Invalid number.")
+```
+
+## 常见异常
+
+- `ValueError`：数值转换失败
+- `FileNotFoundError`：文件不存在
+- `IndexError`：索引不存在
+- `NameError`：变量名不存在
+
+## 要点
+
+- `try` 里写可能出错的代码。
+- `except` 里写错误处理。
+- 不要用 try 掩盖所有问题，要知道自己在处理什么错误。
+- 输入、文件读取、格式转换很适合用 try/except。
