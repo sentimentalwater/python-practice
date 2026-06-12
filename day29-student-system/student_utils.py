@@ -50,3 +50,19 @@ def get_highest_person(students):
         if student["score"] >= highest_person["score"]:
             highest_person = student
     return highest_person
+
+
+def print_summary(students):
+    if len(students) == 0:
+        print("No students found.")
+        return
+
+    average_score = get_average(students)
+    passed_students = get_passer(students)
+    top_student = get_highest_person(students)
+
+    print("----- Summary -----")
+    print("Average score:", average_score)
+    print("Passed count:", len(passed_students))
+    print("Passed students:", passed_students)
+    print("Top student:", top_student)
