@@ -1414,3 +1414,66 @@ with open("students.txt", "r", encoding="utf-8") as file:
 - 读取出来的内容默认是字符串。
 - `parts[1]` 是字符串，要计算必须用 `float()`。
 - 文件要和 `.py` 文件在同一个运行目录下，或者写清楚路径。
+
+
+# Day 23：CSV 文件基础
+
+## CSV 是什么
+
+CSV 是用逗号分隔数据的文件。
+
+```text
+Alex,90,95
+Bob,75,70
+```
+
+一行是一条数据，逗号分隔不同字段。
+
+## 写入 CSV
+
+```python
+with open("students.csv", "w", encoding="utf-8") as file:
+    for student in students:
+        file.write(f"{student['name']},{student['score']},{student['attendance']}\n")
+```
+
+## 读取 CSV
+
+```python
+students = []
+
+with open("students.csv", "r", encoding="utf-8") as file:
+    for line in file:
+        line = line.strip()
+        parts = line.split(",")
+
+        student = {
+            "name": parts[0],
+            "score": float(parts[1]),
+            "attendance": float(parts[2])
+        }
+
+        students.append(student)
+```
+
+## 核心流程
+
+```text
+写入：dict/list → CSV 文本
+读取：CSV 文本 → split(",") → dict/list
+```
+
+## 要点
+
+- CSV 本质上是有规则的文本文件。
+- 一行通常表示一条数据。
+- 逗号用来分隔字段。
+- 读取出来的内容默认是字符串。
+- 分数、出勤率要用 `float()` 转成数字。
+
+## 易错点
+
+- 忘记 `\n`，多条数据会挤在一行。
+- `parts[1]` 是字符串，不是数字。
+- 文件名要和代码里一致。
+- 当前代码只能读取固定格式：`name,score,attendance`。
