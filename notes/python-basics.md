@@ -1556,3 +1556,82 @@ except ValueError:
 - `except` 里写错误处理。
 - 不要用 try 掩盖所有问题，要知道自己在处理什么错误。
 - 输入、文件读取、格式转换很适合用 try/except。
+
+
+# Day 25：import 模块基础
+
+## import 是什么
+
+`import` 用来导入模块。模块可以理解为别人已经写好的工具包。
+
+## random
+
+```python
+import random
+
+number = random.randint(1, 10)
+print(number)
+```
+
+## random.choice()
+
+```python
+import random
+
+names = ["Alex", "Bob", "Cindy"]
+name = random.choice(names)
+
+print(name)
+```
+
+## datetime
+
+```python
+import datetime
+
+today = datetime.date.today()
+print(today)
+```
+
+## os
+
+```python
+import os
+
+print(os.getcwd())
+```
+
+## from import
+
+```python
+from random import randint
+
+number = randint(1, 10)
+```
+
+## 示例：学习日志
+
+```python
+import datetime
+
+today = datetime.date.today()
+
+with open("study_log.txt", "a", encoding="utf-8") as file:
+    file.write(f"{today},Python import,2\n")
+```
+
+## 要点
+
+- `import` 是导入模块。
+- 模块是别人写好的工具包。
+- `random` 用来生成随机数或随机选择。
+- `datetime` 用来处理日期和时间。
+- `os.getcwd()` 可以查看当前运行目录。
+- `a` 模式用于追加写入。
+
+## 易错点
+
+- `import random` 后调用要写 `random.randint()`。
+- `from random import randint` 后才可以直接写 `randint()`。
+- 文件日志通常用 `"a"`，避免覆盖旧内容。
+- `datetime.date.today()` 是一层一层调用。
